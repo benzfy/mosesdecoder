@@ -1406,7 +1406,7 @@ sub word_align {
 
     safesystem("$GIZA2BAL -d $__ALIGNMENT_INV_CMD -i $__ALIGNMENT_CMD |".
 	  "$SYMAL -alignment=\"$__symal_a\" -diagonal=\"$__symal_d\" ".
-	  "-final=\"$__symal_f\" -both=\"$__symal_b\" > ".
+	  "-final=\"$__symal_f\" -both=\"$__symal_b\" | awk -F '{##}' '{print \$3}' > ".
 	  "$___ALIGNMENT_FILE.$___ALIGNMENT")
       ||
        die "ERROR: Can't generate symmetrized alignment file\n"
